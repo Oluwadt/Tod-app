@@ -67,8 +67,6 @@ form.addEventListener("submit", (e) => {
                     }
                 }
             })
-            
-            // circle.setAttribute("fill", "hsl(192, 100%, 67%)")
         }
         circle.addEventListener("mouseover", () => {
             stroke.setAttribute("stroke", "hsl(192, 100%, 67%)");
@@ -82,7 +80,21 @@ form.addEventListener("submit", (e) => {
     let todoDivs = document.getElementsByClassName('todo-name')
     todoDivs = Array.from(todoDivs)
     todoDivs.forEach(div => {
-
+        const todoName = div.innerText.trim()
+        const tick = div.children[0]
+        const gradCircle = div.children[1]
+        todos.forEach(todo => {
+            if (todo.name == todoName) {
+                if (todo.status == 'completed') {
+                    tick.style.visibility = 'visible'
+                    gradCircle.style.visibility = 'visible'
+                }
+                else {
+                    tick.style.visibility = 'hidden'
+                    gradCircle.style.visibility = 'hidden'
+                }
+            }
+        })
 
         const delBtn = div.children[3]
         div.addEventListener("mouseover", () => {
