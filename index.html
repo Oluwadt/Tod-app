@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Space+Grotesk:wght@300;500&display=swap" rel="stylesheet">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="stylesheet" href="style.css">
+
+  <title>Todo app</title>
+</head>
+<body>
+  <div class="outside">
+    <div class="container">
+      <div class="top">
+        <h1 id="head-text">TODO <img src="./images/icon-sun.svg" id="theme-img"></h1>
+      </div>
+      <div class="task-input-div">
+        <div>
+          <img src="./images/icons8-circle-50.svg" id="input-check">
+          <form id="form"><input type="text" id="new-todo" placeholder="Create a new todo..."></form>
+        </div>
+      </div>
+      <div id="tasks">
+        <div class="task">
+          <p class="todo-name">
+            <img src="./images/icon-check.svg" class="tick">
+            <img src="./images/check-circle-gradient.png" class="gradient-circle">
+            <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+          width="50.000000pt" height="50.000000pt" viewBox="0 0 50.000000 50.000000"
+          preserveAspectRatio="xMidYMid meet" class="check-circle">
+         
+         <g transform="translate(0.000000,50.000000) scale(0.100000,-0.100000)"
+         fill="transparent" stroke="hsl(236, 9%, 61%)" stroke-width="5" class="circle-stroke">
+         <path d="M210 470 c-178 -33 -245 -259 -113 -381 46 -43 91 -61 153 -61 126 0
+         222 96 222 222 0 140 -126 246 -262 220z m135 -29 c80 -36 120 -111 113 -212
+         -8 -111 -94 -189 -207 -189 -136 1 -219 92 -209 231 11 146 166 233 303 170z"/>
+         </g>
+         </svg>PLAY<img src="./images/icon-cross.svg" class="del-img"></p>
+        </div>
+      </div>
+      <footer>
+        <p>
+          <span id="remaining">0 items left</span>
+          <span class="footer-btns">
+            <button id="all">All</button>
+            <button id="active">Active</button>
+            <button id="completed">Completed</button>
+          </span>
+          <span id="clear">Clear Completed</span>
+        </p>
+      </footer>
+    </div>
+  </div>
+  <script src="index.js"></script>
+</body>
+</html>
