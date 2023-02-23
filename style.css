@@ -103,7 +103,6 @@ body {
     position: relative;
     height: 7.5vh;
     text-align: left;
-    color: hsl(236, 33%, 92%);
     background-color: hsl(235, 24%, 19%);
     border-bottom: 1px solid hsl(234, 11%, 52%);
     margin-top: 0;
@@ -113,6 +112,7 @@ body {
 .todo-name {
     margin: 0;
     transform: translate(-2.5vw, 10%);
+    color: hsl(236, 33%, 92%);
     font-size: 1.4vw;
 }
 
@@ -133,7 +133,7 @@ body {
 
 .tick {
     visibility: hidden;
-    transform: translate(4.45vw, -20%);
+    transform: translate(1.8vw, -15%);
     width: 1vw;
     z-index: 3;
 }
@@ -142,7 +142,7 @@ body {
     visibility: hidden;
     height: 2.17vw;
     width: 2.17vw;
-    transform: translate(2.43vw, 25%);
+    transform: translate(3.85vw, 25%);
     z-index: 1;
 }
 
@@ -190,4 +190,9 @@ footer > p {
 #clear {
     text-align: right;
     margin-left: 5vw;
+}
+
+.complete-todo {
+    color: hsl(236, 9%, 61%);
+    text-decoration: line-through;
 }
