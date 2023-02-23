@@ -87,15 +87,18 @@ form.addEventListener("submit", (e) => {
         const todoName = div.innerText.trim()
         const tick = div.children[1]
         const gradCircle = div.children[0]
+        const nameElement = div.children[3]
         todos.forEach(todo => {
             if (todo.name == todoName) {
                 if (todo.status == 'completed') {
                     tick.style.visibility = 'visible'
                     gradCircle.style.visibility = 'visible'
+                    nameElement.classList.add("complete-todo")
                 }
                 else {
                     tick.style.visibility = 'hidden'
                     gradCircle.style.visibility = 'hidden'
+                    nameElement.classList.remove("complete-todo")
                 }
             }
         })
@@ -181,15 +184,18 @@ clear.onclick = () => {
         const todoName = div.innerText.trim()
         const tick = div.children[1]
         const gradCircle = div.children[0]
+        const nameElement = div.children[3]
         todos.forEach(todo => {
             if (todo.name == todoName) {
                 if (todo.status == 'completed') {
                     tick.style.visibility = 'visible'
                     gradCircle.style.visibility = 'visible'
+                    nameElement.classList.add("complete-todo")
                 }
                 else {
                     tick.style.visibility = 'hidden'
                     gradCircle.style.visibility = 'hidden'
+                    nameElement.classList.remove("complete-todo")
                 }
             }
         })
