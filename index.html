@@ -15,7 +15,7 @@
 
   <title>Todo app</title>
 </head>
-<body>
+<body class="body">
   <div class="outside">
     <div class="container">
       <div class="top">
@@ -24,11 +24,11 @@
       <div class="task-input-div">
         <div>
           <img src="./images/icons8-circle-50.svg" id="input-check">
-          <form id="form"><input type="text" id="new-todo" placeholder="Create a new todo..."></form>
+          <form id="form"><input type="text" class="new-todo" placeholder="Create a new todo..."></form>
         </div>
       </div>
-      <div id="tasks"></div>
-      <footer>
+      <div class="tasks"></div>
+      <footer class="footer">
         <p>
           <span id="remaining">0 items left</span>
           <span class="footer-btns">
@@ -36,7 +36,7 @@
             <button id="active" class="footer-btn">Active</button>
             <button id="completed" class="footer-btn">Completed</button>
           </span>
-          <span id="clear">Clear Completed</span>
+          <span class="clear">Clear Completed</span>
         </p>
       </footer>
     </div>

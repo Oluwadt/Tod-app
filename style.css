@@ -1,12 +1,12 @@
-body {
+.body {
     background-color: hsl(235, 21%, 11%);
     font-family: 'Josefin Sans', sans-serif;
+    background-image: url("./images/bg-desktop-dark.jpg");
+    background-size: 100% 3000%;
+    background-repeat: no-repeat;
 }
 
 .outside {
-    background-image: url("./images/bg-desktop-dark.jpg");
-    background-size: 100% 80%;
-    background-repeat: no-repeat;
     position: absolute;
     top: 0;
     left: 0;
@@ -34,6 +34,7 @@ body {
 }
 
 #theme-img {
+    margin-left: 25vw;
     width: 2vw;
 }
 
@@ -68,7 +69,7 @@ body {
     width: 80%;
 }
 
-#new-todo {
+.new-todo {
     border: none;
     background-color: transparent;
     width: 100%;
@@ -78,13 +79,13 @@ body {
     color: hsl(236, 33%, 92%);
 }
 
-#new-todo::placeholder {
+.new-todo::placeholder {
     font-size: 1.4vw;
     font-family: 'Josefin Sans', sans-serif;
     color: hsl(236, 9%, 61%);
 }
 
-#new-todo:focus {
+.new-todo:focus {
     outline: none;
 }
 
@@ -93,10 +94,11 @@ body {
     vertical-align: middle;
 }  
 
-#tasks {
+.tasks {
     margin: auto;
     margin-top: 2%;
     width: 40%;
+    box-shadow: 0.001vw 1vh 2vw hsl(235, 21%, 5%), -0.001vw 9vh 2vw hsl(235, 21%, 5%);
 }
 
 .task {
@@ -105,6 +107,7 @@ body {
     text-align: left;
     background-color: hsl(235, 24%, 19%);
     border-bottom: 1px solid hsl(234, 11%, 52%);
+    color: hsl(236, 33%, 92%);
     margin-top: 0;
     font-weight: 100;
 }
@@ -112,7 +115,6 @@ body {
 .todo-name {
     margin: 0;
     transform: translate(-2.5vw, 10%);
-    color: hsl(236, 33%, 92%);
     font-size: 1.4vw;
 }
 
@@ -154,7 +156,7 @@ body {
     display: none;
 }
 
-footer {
+.footer {
     margin: auto;
     height: 7.5vh;
     background-color: hsl(235, 24%, 19%);
@@ -171,12 +173,16 @@ footer {
     font-family: 'Josefin Sans', sans-serif;
 }
 
-.footer-btn:hover, #clear:hover {
+.footer-btn, .clear {
+    font-weight: 600;
+}
+
+.footer-btn:hover, .clear:hover {
     cursor: pointer;
     color: hsl(0, 0%, 98%);
 }
 
-footer > p {
+.footer > p {
     text-align: center;
     transform: translate(0, 40%);
 }
@@ -185,9 +191,10 @@ footer > p {
     margin-right: 5vw;
     font-size: 1vw;
     text-align: left;
+    font-weight: 600;
 }
 
-#clear {
+.clear {
     text-align: right;
     margin-left: 5vw;
 }
@@ -199,4 +206,36 @@ footer > p {
 
 .active-footer-btn {
     color: hsl(220, 98%, 61%);
+}
+
+.light-body {
+    background-color: hsl(236, 33%, 92%);
+    background-image: url("./images/bg-desktop-light.jpg");
+}
+
+.light-task {
+    background-color: hsl(0, 0%, 98%);
+    border-bottom: 1px solid hsl(236, 9%, 61%);
+    color: hsl(235, 24%, 19%);
+}
+
+.light-task-input-div {
+    background-color: hsl(0, 0%, 98%);
+}
+
+.light-new-todo {
+    color: hsl(235, 24%, 19%);
+}
+
+.light-footer {
+    background-color: hsl(0, 0%, 98%);
+}
+
+.light-footer-btn:hover, .light-clear:hover {
+    cursor: pointer;
+    color: hsl(235, 21%, 11%);
+}
+
+.light-tasks {
+    box-shadow: 0.001vw 1vh 2vw hsl(236, 33%, 80%), -0.001vw 9vh 2vw hsl(236, 33%, 80%);
 }

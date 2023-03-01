@@ -1,11 +1,18 @@
 let todos = []
+const footerBtns = document.querySelectorAll('.footer-btn')
+const body = document.getElementsByClassName('body')[0]
+const footer = document.getElementsByClassName('footer')[0]
+let themeBtn = document.getElementById('theme-img')
+const taskInputDiv = document.getElementsByClassName('task-input-div')[0]
+const taskInput = document.getElementsByClassName('new-todo')[0]
 const remaining = document.getElementById('remaining')
-const clearBtn = document.getElementById('clear')
+const clearBtn = document.getElementsByClassName('clear')[0]
 const allBtn = document.getElementById('all')
 const activeBtn = document.getElementById('active')
 const completedBtn = document.getElementById('completed')
+let theme = 'dark'
 
-const todosDiv = document.getElementById('tasks')
+const todosDiv = document.getElementsByClassName('tasks')[0]
 const form = document.getElementById('form')
 let todosDivHTML = ''
 allBtn.classList.add('active-footer-btn')
@@ -33,9 +40,8 @@ const showTodo = (todo) => {
 form.addEventListener("submit", (e) => {
     e.preventDefault()
 
-    const todoInput = document.getElementById('new-todo')
     const newTodo = {
-        name: todoInput.value,
+        name: taskInput.value,
         status: 'active'
     }
  
@@ -43,10 +49,10 @@ form.addEventListener("submit", (e) => {
     todos.push(newTodo)
     todosDivHTML += showTodo(newTodo)
 
-    todoInput.value = ''
+    taskInput.value = ''
 
     todosDiv.innerHTML = todosDivHTML
-    
+
     let circles = document.getElementsByClassName('check-circle')
     circles = Array.from(circles)
     circles.forEach(circle => {
@@ -90,6 +96,7 @@ form.addEventListener("submit", (e) => {
     let todoDivs = document.getElementsByClassName('todo-name')
     todoDivs = Array.from(todoDivs)
     todoDivs.forEach(div => {
+        const todoDiv = div.parentNode
         const todoName = div.innerText.trim()
         const tick = div.children[1]
         const gradCircle = div.children[0]
@@ -108,6 +115,12 @@ form.addEventListener("submit", (e) => {
                 }
             }
         })
+
+        if (theme == 'light') {
+            todoDiv.classList.add('light-task')
+        } else {
+            todoDiv.classList.remove('light-task')
+        }
 
         const delBtn = div.children[4]
         div.addEventListener("mouseover", () => {
@@ -192,6 +205,7 @@ clearBtn.onclick = () => {
     let todoDivs = document.getElementsByClassName('todo-name')
     todoDivs = Array.from(todoDivs)
     todoDivs.forEach(div => {
+        const todoDiv = div.parentNode
         const todoName = div.innerText.trim()
         const tick = div.children[1]
         const gradCircle = div.children[0]
@@ -210,6 +224,12 @@ clearBtn.onclick = () => {
                 }
             }
         })
+
+        if (theme == 'light') {
+            todoDiv.classList.add('light-task')
+        } else {
+            todoDiv.classList.remove('light-task')
+        }
 
         const delBtn = div.children[4]
         div.addEventListener("mouseover", () => {
@@ -240,7 +260,6 @@ clearBtn.onclick = () => {
     remaining.innerText = `${remainingTodos.length} items left`
 
 }
-
 
 allBtn.onclick = () => {
     allBtn.classList.add('active-footer-btn')
@@ -298,6 +317,7 @@ allBtn.onclick = () => {
     let todoDivs = document.getElementsByClassName('todo-name')
     todoDivs = Array.from(todoDivs)
     todoDivs.forEach(div => {
+        const todoDiv = div.parentNode
         const todoName = div.innerText.trim()
         const tick = div.children[1]
         const gradCircle = div.children[0]
@@ -316,6 +336,12 @@ allBtn.onclick = () => {
                 }
             }
         })
+
+        if (theme == 'light') {
+            todoDiv.classList.add('light-task')
+        } else {
+            todoDiv.classList.remove('light-task')
+        }
 
         const delBtn = div.children[4]
         div.addEventListener("mouseover", () => {
@@ -403,6 +429,7 @@ activeBtn.onclick = () => {
     let todoDivs = document.getElementsByClassName('todo-name')
     todoDivs = Array.from(todoDivs)
     todoDivs.forEach(div => {
+        const todoDiv = div.parentNode
         const todoName = div.innerText.trim()
         const tick = div.children[1]
         const gradCircle = div.children[0]
@@ -421,6 +448,12 @@ activeBtn.onclick = () => {
                 }
             }
         })
+
+        if (theme == 'light') {
+            todoDiv.classList.add('light-task')
+        } else {
+            todoDiv.classList.remove('light-task')
+        }
 
         const delBtn = div.children[4]
         div.addEventListener("mouseover", () => {
@@ -508,6 +541,7 @@ completedBtn.onclick = () => {
     let todoDivs = document.getElementsByClassName('todo-name')
     todoDivs = Array.from(todoDivs)
     todoDivs.forEach(div => {
+        const todoDiv = div.parentNode
         const todoName = div.innerText.trim()
         const tick = div.children[1]
         const gradCircle = div.children[0]
@@ -526,6 +560,12 @@ completedBtn.onclick = () => {
                 }
             }
         })
+
+        if (theme == 'light') {
+            todoDiv.classList.add('light-task')
+        } else {
+            todoDiv.classList.remove('light-task')
+        }
 
         const delBtn = div.children[4]
         div.addEventListener("mouseover", () => {
@@ -554,4 +594,40 @@ completedBtn.onclick = () => {
 
     const remainingTodos = todos.filter(todo => todo.status == 'active')
     remaining.innerText = `${remainingTodos.length} items left`
+}
+
+themeBtn.onclick = () => {
+    const currTheme = themeBtn.getAttribute('src')
+    const tasks = document.querySelectorAll('.task')
+    if (currTheme == "./images/icon-sun.svg") {
+        themeBtn.setAttribute('src', "./images/icon-moon.svg")
+        body.classList.add('light-body')
+        taskInputDiv.classList.add('light-task-input-div')
+        footer.classList.add('light-footer')
+        clearBtn.classList.add('light-clear')
+        taskInput.classList.add('light-new-todo')
+        todosDiv.classList.add('light-tasks')
+        footerBtns.forEach(btn => {
+            btn.classList.add('light-footer-btn')
+        });
+        tasks.forEach(task => {
+            task.classList.add('light-task')
+        });
+        theme = 'light'
+    } else {
+        themeBtn.setAttribute('src', "./images/icon-sun.svg")
+        body.classList.remove('light-body')
+        taskInputDiv.classList.remove('light-task-input-div')
+        footer.classList.remove('light-footer')
+        clearBtn.classList.remove('light-clear')
+        taskInput.classList.remove('light-new-todo')
+        todosDiv.classList.remove('light-tasks')
+        footerBtns.forEach(btn => {
+            btn.classList.remove('light-footer-btn')
+        });
+        tasks.forEach(task => {
+            task.classList.remove('light-task')
+        });
+        theme = 'dark'
+    }
 }
