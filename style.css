@@ -163,7 +163,7 @@ footer {
     width: 40%;
 }
 
-footer > p > span > button {
+.footer-btn {
     background-color: transparent;
     border: none;
     color: hsl(236, 9%, 61%);
@@ -171,7 +171,7 @@ footer > p > span > button {
     font-family: 'Josefin Sans', sans-serif;
 }
 
-footer > p > span > button:hover, #clear:hover {
+.footer-btn:hover, #clear:hover {
     cursor: pointer;
     color: hsl(0, 0%, 98%);
 }
@@ -195,4 +195,8 @@ footer > p {
 .complete-todo {
     color: hsl(236, 9%, 61%);
     text-decoration: line-through;
+}
+
+.active-footer-btn {
+    color: hsl(220, 98%, 61%);
 }

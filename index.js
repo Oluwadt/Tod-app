@@ -1,10 +1,14 @@
 let todos = []
 const remaining = document.getElementById('remaining')
-const clear = document.getElementById('clear')
+const clearBtn = document.getElementById('clear')
+const allBtn = document.getElementById('all')
+const activeBtn = document.getElementById('active')
+const completedBtn = document.getElementById('completed')
 
 const todosDiv = document.getElementById('tasks')
 const form = document.getElementById('form')
 let todosDivHTML = ''
+allBtn.classList.add('active-footer-btn')
 const showTodo = (todo) => {
     const newTodo = `<div class="task">
     <p class="todo-name">
@@ -71,6 +75,8 @@ form.addEventListener("submit", (e) => {
                     }
                 }
             })
+            const remainingTodos = todos.filter(todo => todo.status == 'active')
+            remaining.innerText = `${remainingTodos.length} items left`
         }
         circle.addEventListener("mouseover", () => {
             stroke.setAttribute("stroke", "hsl(192, 100%, 67%)");
@@ -123,14 +129,17 @@ form.addEventListener("submit", (e) => {
             let text = todoDiv.innerText
             text = String(text.trim())
             todos = todos.filter(todo => !text.includes(todo.name))
-            remaining.innerText = `${todos.length} items left`
+            const remainingTodos = todos.filter(todo => todo.status == 'active')
+            remaining.innerText = `${remainingTodos.length} items left`
         }    
     });
 
-    remaining.innerText = `${todos.length} items left`
+    const remainingTodos = todos.filter(todo => todo.status == 'active')
+    remaining.innerText = `${remainingTodos.length} items left`
+    
 })
 
-clear.onclick = () => {
+clearBtn.onclick = () => {
     todos = todos.filter(todo => todo.status == 'active')
     let tempTodos = ''
     todos.forEach(todo => {
@@ -168,6 +177,8 @@ clear.onclick = () => {
                     }
                 }
             })
+            const remainingTodos = todos.filter(todo => todo.status == 'active')
+            remaining.innerText = `${remainingTodos.length} items left`
         }
         circle.addEventListener("mouseover", () => {
             stroke.setAttribute("stroke", "hsl(192, 100%, 67%)");
@@ -220,10 +231,327 @@ clear.onclick = () => {
             let text = todoDiv.innerText
             text = String(text.trim())
             todos = todos.filter(todo => !text.includes(todo.name))
-            remaining.innerText = `${todos.length} items left`
+            const remainingTodos = todos.filter(todo => todo.status == 'active')
+            remaining.innerText = `${remainingTodos.length} items left`
         }    
     });
 
-    remaining.innerText = `${todos.length} items left`
+    const remainingTodos = todos.filter(todo => todo.status == 'active')
+    remaining.innerText = `${remainingTodos.length} items left`
 
+}
+
+
+allBtn.onclick = () => {
+    allBtn.classList.add('active-footer-btn')
+    activeBtn.classList.remove('active-footer-btn')
+    completedBtn.classList.remove('active-footer-btn')
+
+    let tempTodos = ''
+    todos.forEach(todo => {
+        const tempTodo = showTodo(todo)
+        tempTodos += tempTodo
+    });
+    todosDiv.innerHTML = tempTodos
+    todosDivHTML = tempTodos
+    
+    let circles = document.getElementsByClassName('check-circle')
+    circles = Array.from(circles)
+    circles.forEach(circle => {
+        const stroke = circle.children[0]
+        circle.onclick = () => {
+            const tick = circle.parentNode.children[1]
+            const gradCircle = circle.parentNode.children[0]
+            const nameElement = circle.parentNode.children[3]
+            const todoName = circle.parentNode.innerText.trim()
+            if (tick.style.visibility == 'visible') {
+                tick.style.visibility = 'hidden'
+                gradCircle.style.visibility = 'hidden'
+                nameElement.classList.remove("complete-todo")
+            } else {
+                tick.style.visibility = 'visible'
+                gradCircle.style.visibility = 'visible'
+                nameElement.classList.add("complete-todo")
+            }
+            todos.forEach(todo => {
+                if (todo.name == todoName) {
+                    if (todo.status == 'active') {
+                        todo.status = 'completed'
+                    }
+                    else {
+                        todo.status = 'active'
+                    }
+                }
+            })
+            const remainingTodos = todos.filter(todo => todo.status == 'active')
+            remaining.innerText = `${remainingTodos.length} items left`
+        }
+        circle.addEventListener("mouseover", () => {
+            stroke.setAttribute("stroke", "hsl(192, 100%, 67%)");
+        });
+    
+        circle.addEventListener("mouseout", () => {
+            stroke.setAttribute("stroke", "hsl(236, 9%, 61%)");
+        });
+    });
+    
+    let todoDivs = document.getElementsByClassName('todo-name')
+    todoDivs = Array.from(todoDivs)
+    todoDivs.forEach(div => {
+        const todoName = div.innerText.trim()
+        const tick = div.children[1]
+        const gradCircle = div.children[0]
+        const nameElement = div.children[3]
+        todos.forEach(todo => {
+            if (todo.name == todoName) {
+                if (todo.status == 'completed') {
+                    tick.style.visibility = 'visible'
+                    gradCircle.style.visibility = 'visible'
+                    nameElement.classList.add("complete-todo")
+                }
+                else {
+                    tick.style.visibility = 'hidden'
+                    gradCircle.style.visibility = 'hidden'
+                    nameElement.classList.remove("complete-todo")
+                }
+            }
+        })
+
+        const delBtn = div.children[4]
+        div.addEventListener("mouseover", () => {
+            delBtn.style.display = 'block'
+        })
+
+        div.addEventListener("mouseout", () => {
+            delBtn.style.display = 'none'
+        })
+    });
+    
+    let delBtns = document.getElementsByClassName('del-img')
+    delBtns = Array.from(delBtns)
+    delBtns.forEach(delBtn => {
+        const todoDiv = delBtn.parentNode.parentNode
+        delBtn.onclick = () => {
+            todoDiv.remove()
+            todosDivHTML = todosDiv.innerHTML
+            let text = todoDiv.innerText
+            text = String(text.trim())
+            todos = todos.filter(todo => !text.includes(todo.name))
+            const remainingTodos = todos.filter(todo => todo.status == 'active')
+            remaining.innerText = `${remainingTodos.length} items left`
+        }    
+    });
+
+    const remainingTodos = todos.filter(todo => todo.status == 'active')
+    remaining.innerText = `${remainingTodos.length} items left`
+}
+
+activeBtn.onclick = () => {
+    activeBtn.classList.add('active-footer-btn')
+    allBtn.classList.remove('active-footer-btn')
+    completedBtn.classList.remove('active-footer-btn')
+
+    const shownTodos = todos.filter(todo => todo.status == 'active')
+    let tempTodos = ''
+    shownTodos.forEach(todo => {
+        const tempTodo = showTodo(todo)
+        tempTodos += tempTodo
+    });
+    todosDiv.innerHTML = tempTodos
+    todosDivHTML = tempTodos
+    
+    let circles = document.getElementsByClassName('check-circle')
+    circles = Array.from(circles)
+    circles.forEach(circle => {
+        const stroke = circle.children[0]
+        circle.onclick = () => {
+            const tick = circle.parentNode.children[1]
+            const gradCircle = circle.parentNode.children[0]
+            const nameElement = circle.parentNode.children[3]
+            const todoName = circle.parentNode.innerText.trim()
+            if (tick.style.visibility == 'visible') {
+                tick.style.visibility = 'hidden'
+                gradCircle.style.visibility = 'hidden'
+                nameElement.classList.remove("complete-todo")
+            } else {
+                tick.style.visibility = 'visible'
+                gradCircle.style.visibility = 'visible'
+                nameElement.classList.add("complete-todo")
+            }
+            todos.forEach(todo => {
+                if (todo.name == todoName) {
+                    if (todo.status == 'active') {
+                        todo.status = 'completed'
+                    }
+                    else {
+                        todo.status = 'active'
+                    }
+                }
+            })
+            const remainingTodos = todos.filter(todo => todo.status == 'active')
+            remaining.innerText = `${remainingTodos.length} items left`
+        }
+        circle.addEventListener("mouseover", () => {
+            stroke.setAttribute("stroke", "hsl(192, 100%, 67%)");
+        });
+    
+        circle.addEventListener("mouseout", () => {
+            stroke.setAttribute("stroke", "hsl(236, 9%, 61%)");
+        });
+    });
+    
+    let todoDivs = document.getElementsByClassName('todo-name')
+    todoDivs = Array.from(todoDivs)
+    todoDivs.forEach(div => {
+        const todoName = div.innerText.trim()
+        const tick = div.children[1]
+        const gradCircle = div.children[0]
+        const nameElement = div.children[3]
+        todos.forEach(todo => {
+            if (todo.name == todoName) {
+                if (todo.status == 'completed') {
+                    tick.style.visibility = 'visible'
+                    gradCircle.style.visibility = 'visible'
+                    nameElement.classList.add("complete-todo")
+                }
+                else {
+                    tick.style.visibility = 'hidden'
+                    gradCircle.style.visibility = 'hidden'
+                    nameElement.classList.remove("complete-todo")
+                }
+            }
+        })
+
+        const delBtn = div.children[4]
+        div.addEventListener("mouseover", () => {
+            delBtn.style.display = 'block'
+        })
+
+        div.addEventListener("mouseout", () => {
+            delBtn.style.display = 'none'
+        })
+    });
+    
+    let delBtns = document.getElementsByClassName('del-img')
+    delBtns = Array.from(delBtns)
+    delBtns.forEach(delBtn => {
+        const todoDiv = delBtn.parentNode.parentNode
+        delBtn.onclick = () => {
+            todoDiv.remove()
+            todosDivHTML = todosDiv.innerHTML
+            let text = todoDiv.innerText
+            text = String(text.trim())
+            todos = todos.filter(todo => !text.includes(todo.name))
+            const remainingTodos = todos.filter(todo => todo.status == 'active')
+            remaining.innerText = `${remainingTodos.length} items left`
+        }    
+    });
+
+    const remainingTodos = todos.filter(todo => todo.status == 'active')
+    remaining.innerText = `${remainingTodos.length} items left`
+}
+
+completedBtn.onclick = () => {
+    completedBtn.classList.add('active-footer-btn')
+    activeBtn.classList.remove('active-footer-btn')
+    allBtn.classList.remove('active-footer-btn')
+    
+    const shownTodos = todos.filter(todo => todo.status == 'completed')
+    let tempTodos = ''
+    shownTodos.forEach(todo => {
+        const tempTodo = showTodo(todo)
+        tempTodos += tempTodo
+    });
+    todosDiv.innerHTML = tempTodos
+    todosDivHTML = tempTodos
+    
+    let circles = document.getElementsByClassName('check-circle')
+    circles = Array.from(circles)
+    circles.forEach(circle => {
+        const stroke = circle.children[0]
+        circle.onclick = () => {
+            const tick = circle.parentNode.children[1]
+            const gradCircle = circle.parentNode.children[0]
+            const nameElement = circle.parentNode.children[3]
+            const todoName = circle.parentNode.innerText.trim()
+            if (tick.style.visibility == 'visible') {
+                tick.style.visibility = 'hidden'
+                gradCircle.style.visibility = 'hidden'
+                nameElement.classList.remove("complete-todo")
+            } else {
+                tick.style.visibility = 'visible'
+                gradCircle.style.visibility = 'visible'
+                nameElement.classList.add("complete-todo")
+            }
+            todos.forEach(todo => {
+                if (todo.name == todoName) {
+                    if (todo.status == 'active') {
+                        todo.status = 'completed'
+                    }
+                    else {
+                        todo.status = 'active'
+                    }
+                }
+            })
+            const remainingTodos = todos.filter(todo => todo.status == 'active')
+            remaining.innerText = `${remainingTodos.length} items left`
+        }
+        circle.addEventListener("mouseover", () => {
+            stroke.setAttribute("stroke", "hsl(192, 100%, 67%)");
+        });
+    
+        circle.addEventListener("mouseout", () => {
+            stroke.setAttribute("stroke", "hsl(236, 9%, 61%)");
+        });
+    });
+    
+    let todoDivs = document.getElementsByClassName('todo-name')
+    todoDivs = Array.from(todoDivs)
+    todoDivs.forEach(div => {
+        const todoName = div.innerText.trim()
+        const tick = div.children[1]
+        const gradCircle = div.children[0]
+        const nameElement = div.children[3]
+        todos.forEach(todo => {
+            if (todo.name == todoName) {
+                if (todo.status == 'completed') {
+                    tick.style.visibility = 'visible'
+                    gradCircle.style.visibility = 'visible'
+                    nameElement.classList.add("complete-todo")
+                }
+                else {
+                    tick.style.visibility = 'hidden'
+                    gradCircle.style.visibility = 'hidden'
+                    nameElement.classList.remove("complete-todo")
+                }
+            }
+        })
+
+        const delBtn = div.children[4]
+        div.addEventListener("mouseover", () => {
+            delBtn.style.display = 'block'
+        })
+
+        div.addEventListener("mouseout", () => {
+            delBtn.style.display = 'none'
+        })
+    });
+    
+    let delBtns = document.getElementsByClassName('del-img')
+    delBtns = Array.from(delBtns)
+    delBtns.forEach(delBtn => {
+        const todoDiv = delBtn.parentNode.parentNode
+        delBtn.onclick = () => {
+            todoDiv.remove()
+            todosDivHTML = todosDiv.innerHTML
+            let text = todoDiv.innerText
+            text = String(text.trim())
+            todos = todos.filter(todo => !text.includes(todo.name))
+            const remainingTodos = todos.filter(todo => todo.status == 'active')
+            remaining.innerText = `${remainingTodos.length} items left`
+        }    
+    });
+
+    const remainingTodos = todos.filter(todo => todo.status == 'active')
+    remaining.innerText = `${remainingTodos.length} items left`
 }
