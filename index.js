@@ -1,5 +1,34 @@
+if (window.innerWidth < 650) {
+    const mobileFooter = document.querySelector('.footer')
+    mobileFooter.innerHTML = `
+    <p>
+    <span id="remaining">0 items left</span>
+    <span class="clear">Clear Completed</span>
+  </p>`;
+    mobileFooter.insertAdjacentHTML('afterend', `<div class="mobile-cat">
+    <span class="footer-btns">
+      <button id="all" class="footer-btn">All</button>
+      <button id="active" class="footer-btn">Active</button>
+      <button id="completed" class="footer-btn">Completed</button>
+    </span>
+  </div>`)
+ 
+}
+if (window.innerWidth >= 650) {
+    document.querySelector('.footer').innerHTML = `<p>
+    <span id="remaining">0 items left</span>
+    <span class="footer-btns">
+      <button id="all" class="footer-btn">All</button>
+      <button id="active" class="footer-btn">Active</button>
+      <button id="completed" class="footer-btn">Completed</button>
+    </span>
+    <span class="clear">Clear Completed</span>
+  </p>`
+}
+
 let todos = []
 const footerBtns = document.querySelectorAll('.footer-btn')
+const mobileCat = document.getElementsByClassName('mobile-cat')[0]
 const body = document.getElementsByClassName('body')[0]
 const footer = document.getElementsByClassName('footer')[0]
 let themeBtn = document.getElementById('theme-img')
@@ -613,6 +642,9 @@ themeBtn.onclick = () => {
         tasks.forEach(task => {
             task.classList.add('light-task')
         });
+        if (mobileCat) {
+            mobileCat.classList.add('light-mobile-cat')
+        }
         theme = 'light'
     } else {
         themeBtn.setAttribute('src', "./images/icon-sun.svg")
@@ -628,6 +660,9 @@ themeBtn.onclick = () => {
         tasks.forEach(task => {
             task.classList.remove('light-task')
         });
+        if (mobileCat) {
+            mobileCat.classList.remove('light-mobile-cat')
+        }
         theme = 'dark'
     }
 }

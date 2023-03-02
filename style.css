@@ -1,241 +1,499 @@
-.body {
-    background-color: hsl(235, 21%, 11%);
-    font-family: 'Josefin Sans', sans-serif;
-    background-image: url("./images/bg-desktop-dark.jpg");
-    background-size: 100% 3000%;
-    background-repeat: no-repeat;
+@media only screen and (max-width: 649px) {
+
+}
+@media only screen and (max-width: 649px) {
+    .body {
+        background-color: hsl(235, 21%, 11%);
+        font-family: 'Josefin Sans', sans-serif;
+        background-image: url("./images/bg-mobile-dark.jpg");
+        background-size: 100% 2300%;
+        background-repeat: no-repeat;
+    }
+    
+    .outside {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+    
+    .container {
+        display: grid;
+        grid-template-columns: 1fr;
+        z-index: 3;
+    }
+    
+    .top {
+        margin: auto;
+        margin-top: 4%;
+        display: inline;
+        text-align: left;
+    }
+    
+    #theme-img {
+        margin-left: 45vw;
+        width: 6vw;
+    }
+    
+    #theme-img:hover {
+        cursor: pointer;
+    }
+    
+    #head-text {
+        font-size: 7vw;
+        letter-spacing: 3vw;
+        color: hsl(0, 0%, 98%);
+    }
+    
+    .task-input-div {
+        margin: auto;
+        margin-top: 1%;
+        width: 90%;
+        height: 7vh;
+        background-color: hsl(235, 24%, 19%);
+    }
+    
+    .task-input-div > div {
+        transform: translate(1.3vw, 60%);
+    }
+    
+    #input-check {
+        height: 5vw;
+        width: 5vw;
+        transform: translate(3vw, -20%);
+        margin-right: 4vw;
+    }
+    
+    #form {
+        width: 80%;
+    }
+    
+    .new-todo {
+        border: none;
+        background-color: transparent;
+        width: 100%;
+        height: 3vh;
+        transform: translateY(-10%);
+        font-size: 3vw;
+        font-family: 'Josefin Sans', sans-serif;
+        color: hsl(236, 33%, 92%);
+    }
+    
+    .new-todo::placeholder {
+        font-size: 3vw;
+        font-family: 'Josefin Sans', sans-serif;
+        color: hsl(236, 9%, 61%);
+    }
+    
+    .new-todo:focus {
+        outline: none;
+    }
+    
+    #input-check, #form {
+        display: inline-block;
+        vertical-align: middle;
+    }
+    
+    .tasks {
+        margin: auto;
+        margin-top: 4%;
+        width: 90%;
+        box-shadow: 0.001vw 1% 2vw hsl(235, 21%, 5%), -0.001vw 9vh 2vw hsl(235, 21%, 5%);
+    }
+    
+    .task {
+        position: relative;
+        height: 6vh;
+        text-align: left;
+        background-color: hsl(235, 24%, 19%);
+        border-bottom: 1px solid hsl(234, 11%, 52%);
+        color: hsl(236, 33%, 92%);
+        margin-top: 0;
+        font-weight: 100;
+    }
+    
+    .todo-name {
+        margin: 0;
+        transform: translate(-7vw, -10%);
+        font-size: 3vw;
+    }
+    
+    .todo-name:hover {
+        cursor: pointer;
+    }
+    
+    .check-circle {
+        height: 5vw;
+        width: 5vw;
+        margin-right: 3vw;
+        transform: translate(0, 20%);
+    }
+    
+    .check-circle:hover {
+        cursor: pointer;
+    }
+    
+    .tick {
+        visibility: hidden;
+        transform: translate(5vw, -15%);
+        width: 3vw;
+        z-index: 3;
+    }
+    
+    .gradient-circle {
+        visibility: hidden;
+        height: 6.5vw;
+        width: 6.5vw;
+        transform: translate(10.5vw, 25%);
+        z-index: 1;
+    }
+    
+    .del-img {
+        position: absolute;
+        top: 40%;
+        right: -1vw;
+        width: 3vw;
+        transform: translateY(50%);
+        display: none;
+    }
+    
+    .footer {
+        margin: auto;
+        height: 7.5vh;
+        background-color: hsl(235, 24%, 19%);
+        color: hsl(236, 9%, 61%);
+        font-size: 3vw;
+        width: 90%;
+    }
+    
+    .mobile-cat {
+        margin: auto;
+        margin-top: 5%;
+        height: 7.5vh;
+        width: 90%;
+        background-color: hsl(235, 24%, 19%);
+        text-align: center;
+    }
+
+    .footer-btn {
+        transform: translateY(60%);
+        background-color: transparent;
+        border: none;
+        color: hsl(236, 9%, 61%);
+        font-size: 4.5vw;
+        font-weight: 400;
+        font-family: 'Josefin Sans', sans-serif;
+    }
+    
+    .footer-btn, .clear {
+        font-weight: 600;
+    }
+    
+    .footer-btn:hover, .clear:hover {
+        cursor: pointer;
+        color: hsl(0, 0%, 98%);
+    }
+    
+    .footer > p {
+        text-align: center;
+        transform: translate(0, 40%);
+    }
+    
+    #remaining {
+        margin-right: 5vw;
+        font-size: 3vw;
+        text-align: left;
+        font-weight: 600;
+    }
+    
+    .clear {
+        text-align: right;
+        margin-left: 35vw;
+    }
+    
+    .footer-btns {
+        margin-top: 10000%;
+    }
+    
+    .complete-todo {
+        color: hsl(236, 9%, 61%);
+        text-decoration: line-through;
+    }
+    
+    .active-footer-btn {
+        color: hsl(220, 98%, 61%);
+    }
+    
+    .light-body {
+        background-color: hsl(236, 33%, 92%);
+        background-image: url("./images/bg-mobile-light.jpg");
+    }
+    
+    .light-task {
+        background-color: hsl(0, 0%, 98%);
+        border-bottom: 1px solid hsl(236, 9%, 61%);
+        color: hsl(235, 24%, 19%);
+    }
+    
+    .light-task-input-div {
+        background-color: hsl(0, 0%, 98%);
+    }
+    
+    .light-new-todo {
+        color: hsl(235, 24%, 19%);
+    }
+    
+    .light-footer {
+        background-color: hsl(0, 0%, 98%);
+    }
+    
+    .light-footer-btn:hover, .light-clear:hover {
+        cursor: pointer;
+        color: hsl(235, 21%, 11%);
+    }
+    
+    .light-tasks {
+        box-shadow: 0.001vw 1% 2vw hsl(236, 33%, 80%), -0.001vw 9vh 2vw hsl(236, 33%, 80%);
+    }
+
+    .light-mobile-cat {
+        background-color: hsl(0, 0%, 98%);
+        box-shadow: 0.001vw 1% 2vw hsl(236, 33%, 80%), -0.001vw 9vh 2vw hsl(236, 33%, 80%);
+    }
 }
 
-.outside {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-}
-
-.container {
-    display: grid;
-    grid-template-columns: 1fr;
-    z-index: 3;
-}
-
-#dark-bg-img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-}
-
-.top {
-    margin: auto;
-    margin-top: 4%;
-    display: inline;
-    text-align: left;
-}
-
-#theme-img {
-    margin-left: 25vw;
-    width: 2vw;
-}
-
-#theme-img:hover {
-    cursor: pointer;
-}
-
-#head-text {
-    font-size: 2.5vw;
-    letter-spacing: 1vw;
-    color: hsl(0, 0%, 98%);
-}
-
-.task-input-div {
-    margin: auto;
-    margin-top: 1%;
-    width: 40%;
-    height: 7.5vh;
-    background-color: hsl(235, 24%, 19%);
-}
-
-.task-input-div > div {
-    transform: translate(1.3vw, 60%);
-}
-
-#input-check {
-    width: 1.8vw;
-    margin-right: 1.1vw;
-}
-
-#form {
-    width: 80%;
-}
-
-.new-todo {
-    border: none;
-    background-color: transparent;
-    width: 100%;
-    transform: translateY(10%);
-    font-size: 1.4vw;
-    font-family: 'Josefin Sans', sans-serif;
-    color: hsl(236, 33%, 92%);
-}
-
-.new-todo::placeholder {
-    font-size: 1.4vw;
-    font-family: 'Josefin Sans', sans-serif;
-    color: hsl(236, 9%, 61%);
-}
-
-.new-todo:focus {
-    outline: none;
-}
-
-#input-check, #form {
-    display: inline-block;
-    vertical-align: middle;
-}  
-
-.tasks {
-    margin: auto;
-    margin-top: 2%;
-    width: 40%;
-    box-shadow: 0.001vw 1vh 2vw hsl(235, 21%, 5%), -0.001vw 9vh 2vw hsl(235, 21%, 5%);
-}
-
-.task {
-    position: relative;
-    height: 7.5vh;
-    text-align: left;
-    background-color: hsl(235, 24%, 19%);
-    border-bottom: 1px solid hsl(234, 11%, 52%);
-    color: hsl(236, 33%, 92%);
-    margin-top: 0;
-    font-weight: 100;
-}
-
-.todo-name {
-    margin: 0;
-    transform: translate(-2.5vw, 10%);
-    font-size: 1.4vw;
-}
-
-.todo-name:hover {
-    cursor: pointer;
-}
-
-.check-circle {
-    height: 1.8vw;
-    width: 1.8vw;
-    margin-right: 1.3vw;
-    transform: translate(0, 20%);
-}
-
-.check-circle:hover {
-    cursor: pointer;
-}
-
-.tick {
-    visibility: hidden;
-    transform: translate(1.8vw, -15%);
-    width: 1vw;
-    z-index: 3;
-}
-
-.gradient-circle {
-    visibility: hidden;
-    height: 2.17vw;
-    width: 2.17vw;
-    transform: translate(3.85vw, 25%);
-    z-index: 1;
-}
-
-.del-img {
-    position: absolute;
-    top: 40%;
-    right: -1vw;
-    width: 1.2vw;
-    display: none;
-}
-
-.footer {
-    margin: auto;
-    height: 7.5vh;
-    background-color: hsl(235, 24%, 19%);
-    color: hsl(236, 9%, 61%);
-    font-size: 1vw;
-    width: 40%;
-}
-
-.footer-btn {
-    background-color: transparent;
-    border: none;
-    color: hsl(236, 9%, 61%);
-    font-size: 1vw;
-    font-family: 'Josefin Sans', sans-serif;
-}
-
-.footer-btn, .clear {
-    font-weight: 600;
-}
-
-.footer-btn:hover, .clear:hover {
-    cursor: pointer;
-    color: hsl(0, 0%, 98%);
-}
-
-.footer > p {
-    text-align: center;
-    transform: translate(0, 40%);
-}
-
-#remaining {
-    margin-right: 5vw;
-    font-size: 1vw;
-    text-align: left;
-    font-weight: 600;
-}
-
-.clear {
-    text-align: right;
-    margin-left: 5vw;
-}
-
-.complete-todo {
-    color: hsl(236, 9%, 61%);
-    text-decoration: line-through;
-}
-
-.active-footer-btn {
-    color: hsl(220, 98%, 61%);
-}
-
-.light-body {
-    background-color: hsl(236, 33%, 92%);
-    background-image: url("./images/bg-desktop-light.jpg");
-}
-
-.light-task {
-    background-color: hsl(0, 0%, 98%);
-    border-bottom: 1px solid hsl(236, 9%, 61%);
-    color: hsl(235, 24%, 19%);
-}
-
-.light-task-input-div {
-    background-color: hsl(0, 0%, 98%);
-}
-
-.light-new-todo {
-    color: hsl(235, 24%, 19%);
-}
-
-.light-footer {
-    background-color: hsl(0, 0%, 98%);
-}
-
-.light-footer-btn:hover, .light-clear:hover {
-    cursor: pointer;
-    color: hsl(235, 21%, 11%);
-}
-
-.light-tasks {
-    box-shadow: 0.001vw 1vh 2vw hsl(236, 33%, 80%), -0.001vw 9vh 2vw hsl(236, 33%, 80%);
+@media only screen and (min-width: 650px) {
+    .body {
+        background-color: hsl(235, 21%, 11%);
+        font-family: 'Josefin Sans', sans-serif;
+        background-image: url("./images/bg-desktop-dark.jpg");
+        background-size: 100% 3000%;
+        background-repeat: no-repeat;
+    }
+    
+    .outside {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+    
+    .container {
+        display: grid;
+        grid-template-columns: 1fr;
+        z-index: 3;
+    }
+    
+    .top {
+        margin: auto;
+        margin-top: 4%;
+        display: inline;
+        text-align: left;
+    }
+    
+    #theme-img {
+        margin-left: 25vw;
+        width: 2vw;
+    }
+    
+    #theme-img:hover {
+        cursor: pointer;
+    }
+    
+    #head-text {
+        font-size: 2.5vw;
+        letter-spacing: 1vw;
+        color: hsl(0, 0%, 98%);
+    }
+    
+    .task-input-div {
+        margin: auto;
+        margin-top: 1%;
+        width: 40%;
+        height: 7.5vh;
+        background-color: hsl(235, 24%, 19%);
+    }
+    
+    .task-input-div > div {
+        transform: translate(1.3vw, 60%);
+    }
+    
+    #input-check {
+        width: 1.8vw;
+        margin-right: 1.1vw;
+    }
+    
+    #form {
+        width: 80%;
+    }
+    
+    .new-todo {
+        border: none;
+        background-color: transparent;
+        width: 100%;
+        font-size: 1.4vw;
+        font-family: 'Josefin Sans', sans-serif;
+        color: hsl(236, 33%, 92%);
+    }
+    
+    .new-todo::placeholder {
+        font-size: 1.4vw;
+        font-family: 'Josefin Sans', sans-serif;
+        color: hsl(236, 9%, 61%);
+    }
+    
+    .new-todo:focus {
+        outline: none;
+    }
+    
+    #input-check, #form {
+        display: inline-block;
+        vertical-align: middle;
+    }  
+    
+    .tasks {
+        margin: auto;
+        margin-top: 2%;
+        width: 40%;
+        box-shadow: 0.001vw 1vh 2vw hsl(235, 21%, 5%), -0.001vw 9vh 2vw hsl(235, 21%, 5%);
+    }
+    
+    .task {
+        position: relative;
+        height: 7.5vh;
+        text-align: left;
+        background-color: hsl(235, 24%, 19%);
+        border-bottom: 1px solid hsl(234, 11%, 52%);
+        color: hsl(236, 33%, 92%);
+        margin-top: 0;
+        font-weight: 100;
+    }
+    
+    .todo-name {
+        margin: 0;
+        transform: translate(-2.5vw, 10%);
+        font-size: 1.4vw;
+    }
+    
+    .todo-name:hover {
+        cursor: pointer;
+    }
+    
+    .check-circle {
+        height: 1.8vw;
+        width: 1.8vw;
+        margin-right: 1.3vw;
+        transform: translate(0, 20%);
+    }
+    
+    .check-circle:hover {
+        cursor: pointer;
+    }
+    
+    .tick {
+        visibility: hidden;
+        transform: translate(1.8vw, -15%);
+        width: 1vw;
+        z-index: 3;
+    }
+    
+    .gradient-circle {
+        visibility: hidden;
+        height: 2.17vw;
+        width: 2.17vw;
+        transform: translate(3.85vw, 25%);
+        z-index: 1;
+    }
+    
+    .del-img {
+        position: absolute;
+        top: 40%;
+        right: -1vw;
+        width: 1.2vw;
+        display: none;
+    }
+    
+    .footer {
+        margin: auto;
+        height: 7.5vh;
+        background-color: hsl(235, 24%, 19%);
+        color: hsl(236, 9%, 61%);
+        font-size: 1vw;
+        width: 40%;
+    }
+    
+    .footer-btn {
+        background-color: transparent;
+        border: none;
+        color: hsl(236, 9%, 61%);
+        font-size: 1vw;
+        font-family: 'Josefin Sans', sans-serif;
+    }
+    
+    .footer-btn, .clear {
+        font-weight: 600;
+    }
+    
+    .footer-btn:hover, .clear:hover {
+        cursor: pointer;
+        color: hsl(0, 0%, 98%);
+    }
+    
+    .footer > p {
+        text-align: center;
+        transform: translate(0, 40%);
+    }
+    
+    #remaining {
+        margin-right: 5vw;
+        font-size: 1vw;
+        text-align: left;
+        font-weight: 600;
+    }
+    
+    .clear {
+        text-align: right;
+        margin-left: 5vw;
+    }
+    
+    .complete-todo {
+        color: hsl(236, 9%, 61%);
+        text-decoration: line-through;
+    }
+    
+    .active-footer-btn {
+        color: hsl(220, 98%, 61%);
+    }
+    
+    .light-body {
+        background-color: hsl(236, 33%, 92%);
+        background-image: url("./images/bg-desktop-light.jpg");
+    }
+    
+    .light-task {
+        background-color: hsl(0, 0%, 98%);
+        border-bottom: 1px solid hsl(236, 9%, 61%);
+        color: hsl(235, 24%, 19%);
+    }
+    
+    .light-task-input-div {
+        background-color: hsl(0, 0%, 98%);
+    }
+    
+    .light-new-todo {
+        color: hsl(235, 24%, 19%);
+    }
+    
+    .light-footer {
+        background-color: hsl(0, 0%, 98%);
+    }
+    
+    .light-footer-btn:hover, .light-clear:hover {
+        cursor: pointer;
+        color: hsl(235, 21%, 11%);
+    }
+    
+    .light-tasks {
+        box-shadow: 0.001vw 1vh 2vw hsl(236, 33%, 80%), -0.001vw 9vh 2vw hsl(236, 33%, 80%);
+    }
 }
